@@ -10,8 +10,7 @@ class AdminReservacionController extends Controller
 {
     public function index(Request $request): JsonResponse
     {
-        // $request->user() es el UsuarioAdmin autenticado — solo ve las
-        // reservaciones de SU negocio, nunca las de otro (aislamiento por tenant).
+
         $negocio = $request->user()->negocio;
 
         $reservaciones = $negocio->reservaciones()
