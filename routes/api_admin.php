@@ -10,6 +10,7 @@ Route::middleware('auth:sanctum')->prefix('admin')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/me', [AuthController::class, 'usuarioActual']);
     Route::get('/reservaciones', [AdminReservacionController::class, 'index']);
+    Route::patch('/reservaciones/{id}/nota', [AdminReservacionController::class, 'actualizarNota']);
 
     // Aquí se irán agregando: servicios, disponibilidad, etc.
 });

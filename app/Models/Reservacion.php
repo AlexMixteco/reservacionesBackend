@@ -25,6 +25,7 @@ class Reservacion extends Model
         'email_cliente',
         'estado',
         'token_gestion',
+        'notas_admin',
     ];
 
     protected $casts = [
