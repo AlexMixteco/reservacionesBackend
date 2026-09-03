@@ -22,6 +22,7 @@ class ReservacionController extends Controller
             'nombre_cliente' => 'required|string|max:255',
             'telefono_cliente' => 'required|string|max:30',
             'email_cliente' => 'nullable|email',
+            'comentario_cliente' => 'nullable|string|max:1000',
         ]);
 
         // Se usa una transacción con lockForUpdate para que, si dos personas

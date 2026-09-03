@@ -26,6 +26,7 @@ class Reservacion extends Model
         'estado',
         'token_gestion',
         'notas_admin',
+        'comentario_cliente',
     ];
 
     protected $casts = [
