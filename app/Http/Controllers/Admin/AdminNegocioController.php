@@ -20,6 +20,7 @@ class AdminNegocioController extends Controller
             'direccion' => 'nullable|string|max:255',
             'telefono_whatsapp' => 'nullable|string|max:30',
             'color_marca' => 'nullable|string|max:7', // ej. "#4F46E5"
+            'requiere_elegir_profesional' => 'sometimes|boolean',
         ]);
 
         $negocio = $request->user()->negocio;

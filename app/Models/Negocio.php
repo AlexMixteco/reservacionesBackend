@@ -18,6 +18,11 @@ class Negocio extends Model
         'telefono_whatsapp',
         'direccion',
         'color_marca',
+        'requiere_elegir_profesional'
+    ];
+
+    protected $casts = [
+    'requiere_elegir_profesional' => 'boolean',
     ];
 
     public function servicios(): HasMany
@@ -49,4 +54,6 @@ class Negocio extends Model
     {
         return $this->hasMany(UsuarioAdmin::class);
     }
+
+
 }

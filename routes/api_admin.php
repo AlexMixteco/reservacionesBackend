@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminHorarioController;
 use App\Http\Controllers\Admin\AdminNegocioController;
 use App\Http\Controllers\Admin\AdminReservacionController;
 use App\Http\Controllers\Admin\AdminServicioController;
+use App\Http\Controllers\Admin\AdminPersonalController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,4 +31,11 @@ Route::middleware('auth:sanctum')->prefix('admin')->group(function () {
 
     Route::get('/negocio', [AdminNegocioController::class, 'show']);
     Route::patch('/negocio', [AdminNegocioController::class, 'update']);
+
+    Route::get('/personal', [AdminPersonalController::class, 'index']);
+    Route::post('/personal', [AdminPersonalController::class, 'store']);
+    Route::patch('/personal/{id}', [AdminPersonalController::class, 'update']);
+    Route::put('/personal/{id}/servicios', [AdminPersonalController::class, 'guardarServicios']);
+    Route::get('/personal/{id}/horarios', [AdminPersonalController::class, 'horarios']);
+    Route::put('/personal/{id}/horarios/{dia}', [AdminPersonalController::class, 'guardarHorarioDia']);
 });

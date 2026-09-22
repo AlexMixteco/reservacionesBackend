@@ -22,12 +22,18 @@ class DisponibilidadController extends Controller
         $diaSemana = $fecha->dayOfWeek; // 0 = domingo ... 6 = sábado
 
         // 1. Horario de atención de ese día
-        $horario = $negocio->horariosAtencion()
-            ->where('dia_semana', $diaSemana)
-            ->first();
+                // 1. Horario de atención de ese día — si se eligió un profesional, se usa
+        // SU horario propio; si esa persona no tiene uno definido para ese día,
+        // se cae al horario general del negocio.
+        $horarioBase = $negocio->horariosAtencion()->where('dia_semana', $diaSemana);
 
-        if (!$horario) {
-            return response()->json(['horarios_disponibles' => []]);
+        if ($request->personal_id) {
+            $horario = (clone $horarioBase)->where('personal_id', $request->personal_id)->first();
+            if (!$horario) {
+                $horario = (clone $horarioBase)->whereNull('personal_id')->first();
+            }
+        } else {
+            $horario = $horarioBase->whereNull('personal_id')->first();
         }
 
         // 2. ¿Todo el día está bloqueado? (festivo, vacaciones)

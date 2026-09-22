@@ -23,4 +23,9 @@ class HorarioAtencion extends Model
     {
         return $this->belongsTo(Negocio::class);
     }
+
+        public function personal()
+    {
+        return $this->belongsTo(Personal::class);
+    }
 }

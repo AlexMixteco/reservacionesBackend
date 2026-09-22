@@ -32,4 +32,14 @@ class Personal extends Model
     {
         return $this->hasMany(Reservacion::class);
     }
+
+        public function servicios()
+    {
+        return $this->belongsToMany(Servicio::class, 'personal_servicio');
+    }
+
+    public function horariosAtencion()
+    {
+        return $this->hasMany(HorarioAtencion::class);
+    }
 }
