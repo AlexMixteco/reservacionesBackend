@@ -12,7 +12,7 @@ class AdminPersonalController extends Controller
     {
         $personal = $request->user()->negocio->personal()
             ->with('servicios')
-            ->orderBy('nombre')
+            ->orderBy('created_at', 'desc')
             ->get();
 
         return response()->json($personal);
